@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAP Web</title>
+
+</head>
+<body>
+
+    <table>
+        <hr>
+            <tr>Kode</tr>
+            <tr>Nama Barang</tr>
+            <tr>Harga</tr>
+        </hr>
+        <tr>
+            <td>001</td>
+            <td>Barang A</td>
+            <td>10.000</td>
+        </tr>
+        <tr>
+            <td>002</td>
+            <td>Barang B</td>
+            <td>20.000</td>
+        </tr>
+        <tr>
+            <td>003</td>
+            <td>Barang C</td>
+            <td>30.000</td>
+        </tr>
+    </table>
+
+    <form id="beli">
+        <label for="kode">Kode Barang</label>
+        <input type="text" id="kode" name="kode">
+
+        <label for="jumlah">Jumlah:</label>
+        <input type="text" id="jumlah" name="jumlah">
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        document.getElementById('beli').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var kode = document.getElementById('kode').value;
+            var jumlah = parseInt(document.getElementById('jumlah').value, 10);
+
+            var harga;
+            switch (kode) {
+                case '001':
+                    harga = 10000;
+                    break;
+                case '002':
+                    harga = 20000;
+                    break;
+                case '003':
+                    harga = 30000;
+                    break;
+                default:
+                    alert('tidak ada');
+                    return;
+            }
+
+            var totalHarga = harga * jumlah;
+
+            var pembayaran = prompt('Total Harga: ' + totalHarga + '\nMasukkan uang yang ingin dibayarkan:');
+            var bayar = parseFloat(pembayaran);
+
+            var kembali = bayar - totalHarga;
+            if (pembayaran >= kembali) {
+                alert('berhasil.\nkembali: ' + kembali);
+            } else {
+                alert('Kurang.');
+            }
+        });
+    </script>
+
+
+</body>
+</html>
